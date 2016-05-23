@@ -20,11 +20,30 @@ var PostList = ({posts}) => (
  	</div>
 );
 
-var SearchBar = () => (
-	<form>
-		<input type="text" placeholder="Search questions here!"/>
-  </form>
-);
+class SearchBar extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+
+	handleChange (e) {
+		this.props.onSearchInput(this.refs.searchTextInput.value); 
+	}
+
+	render () {
+		return (
+			<form>
+				<input 
+					type="text" 
+					placeholder="Search questions here!"
+					value= {this.props.searchText}
+					ref="searchTextInput"
+					onChange= {this.handleChange.bind(this)}
+				/>
+		  </form>
+	  );
+	} 
+  
+};
 
 var Nav = ({loginClicked, postClicked}) => (
 	<nav>
@@ -48,6 +67,13 @@ class App extends React.Component {
     };
   }
 
+  handleSearchInput (searchText) {
+  	console.log(searchText)
+  	this.setState({
+  		searchText: searchText
+  	});
+  }
+
 	render () {
 		return (
 		  <div>
@@ -59,6 +85,7 @@ class App extends React.Component {
 		    </div>
 		    <div>
 			    <SearchBar 
+			    onSearchInput={this.handleSearchInput.bind(this)}
 			    searchText={this.state.searchText}
 			    />
 		    </div>
