@@ -27,8 +27,8 @@ Once the project moves into development, the press release can be used as a touc
 
 ## Solution ##
   > "Answer FTW" will help you build your reputation by creating a channel between you and people who would like to hear about your expriences, values and perspectives. You do not have to repeat the same answer for the questions you have answered already. Your audience can search the existing questions and share the answers as well. Anybody can access your website and easily post the questions, but you have the full power to control your feed. You might discover very interesting questions that you would like to answer for the public. 
-<!-- 
-## Quote from You ##
+ 
+<!-- ## Quote from You ##
   > A quote from a spokesperson in your company.
  -->
 ## How to Get Started ##
