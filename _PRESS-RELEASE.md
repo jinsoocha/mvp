@@ -16,29 +16,26 @@ Oh, and I also like to write press-releases in what I call "Oprah-speak" for mai
 Once the project moves into development, the press release can be used as a touchstone; a guiding light. The product team can ask themselves, "Are we building what is in the press release?" If they find they're spending time building things that aren't in the press release (overbuilding), they need to ask themselves why. This keeps product development focused on achieving the customer benefits and not building extraneous stuff that takes longer to build, takes resources to maintain, and doesn't provide real customer benefit (at least not enough to warrant inclusion in the press release).
  -->
  
-## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
-
-## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+## Answer For The World ##
+  > Answer your friends or anyone who are curious about your experiences, values and perspectives. 
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > You have experiences, values and perspectives that you want to share and people ask about them. Let them ask on your own "Answer FTW" page and share the answers that might benefit other people. You can think of it as your own blog, but your audience helps you build your stories. You have the full power of selecting questions that you want to answer and publicize. 
 
 ## Problem ##
-  > Describe the problem your product solves.
+  > People might ask you the same questions over your lifetime, but you do not have time or resources to provide them with the full version of your answers everytime, which might benefit other people or help you build your reputation. Also, people who might have questions for you do not necessarily have an easy way to reach you if they do not have your contacts or social media.   
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
-
+  > "Answer FTW" will help you build your reputation by creating a channel between you and people who would like to hear about your expriences, values and perspectives. You do not have to repeat the same answer for the questions you have answered already. Your audience can search the existing questions and share the answers as well. Anybody can access your website and easily post the questions, but you have the full power to control your feed. You might discover very interesting questions that you would like to answer for the public. 
+<!-- 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
-
+ -->
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  > Simply sign up with your email and you will have your own page. Share the url on your email, Linkedin, blog or facebook and let people ask any questions they might have for you with a simple one-click process. Receive and answer the questions via email or log into the page to answer the questions. You will see your answer is in the world already!
 
-## Customer Quote ##
+<!-- ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
-
-## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+ -->
+## Make Your Own Page ##
+  > Visit our website to make your own page and answer for the world.
