@@ -1,3 +1,9 @@
-var POSTS = [{id: 1, question: "what if", answer: "hi i am an answer"},{id: 2, question: "hi i am a question", answer: "hi i am an answer"},{id:3, question: "hi i am a question", answer: "hi i am an answer"},{id:4,question: "hi i am a question", answer: "hi i am an answer"}];
-
-ReactDOM.render(<App posts={POSTS}/>, document.getElementById("app"));
+ReactDOM.render((
+	<Router>
+		<Route path="/" component={App}>
+			<IndexRoute component={Home}/>
+			<Route path="login" component={OwnerView} />
+			<Route path="post" component={PostView} />
+		</Route>	
+	</Router>
+), document.getElementById("app"));

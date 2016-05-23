@@ -1,6 +1,14 @@
 "use strict";
 
-var POSTS = [{ id: 1, question: "what if", answer: "hi i am an answer" }, { id: 2, question: "hi i am a question", answer: "hi i am an answer" }, { id: 3, question: "hi i am a question", answer: "hi i am an answer" }, { id: 4, question: "hi i am a question", answer: "hi i am an answer" }];
-
-ReactDOM.render(React.createElement(App, { posts: POSTS }), document.getElementById("app"));
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2NsaWVudC9zcmMvaW5kZXguanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxJQUFJLFFBQVEsQ0FBQyxFQUFDLElBQUksQ0FBTCxFQUFRLFVBQVUsU0FBbEIsRUFBNkIsUUFBUSxtQkFBckMsRUFBRCxFQUEyRCxFQUFDLElBQUksQ0FBTCxFQUFRLFVBQVUsb0JBQWxCLEVBQXdDLFFBQVEsbUJBQWhELEVBQTNELEVBQWdJLEVBQUMsSUFBRyxDQUFKLEVBQU8sVUFBVSxvQkFBakIsRUFBdUMsUUFBUSxtQkFBL0MsRUFBaEksRUFBb00sRUFBQyxJQUFHLENBQUosRUFBTSxVQUFVLG9CQUFoQixFQUFzQyxRQUFRLG1CQUE5QyxFQUFwTSxDQUFaOztBQUVBLFNBQVMsTUFBVCxDQUFnQixvQkFBQyxHQUFELElBQUssT0FBTyxLQUFaLEdBQWhCLEVBQXNDLFNBQVMsY0FBVCxDQUF3QixLQUF4QixDQUF0QyIsImZpbGUiOiJpbmRleC5qcyIsInNvdXJjZXNDb250ZW50IjpbInZhciBQT1NUUyA9IFt7aWQ6IDEsIHF1ZXN0aW9uOiBcIndoYXQgaWZcIiwgYW5zd2VyOiBcImhpIGkgYW0gYW4gYW5zd2VyXCJ9LHtpZDogMiwgcXVlc3Rpb246IFwiaGkgaSBhbSBhIHF1ZXN0aW9uXCIsIGFuc3dlcjogXCJoaSBpIGFtIGFuIGFuc3dlclwifSx7aWQ6MywgcXVlc3Rpb246IFwiaGkgaSBhbSBhIHF1ZXN0aW9uXCIsIGFuc3dlcjogXCJoaSBpIGFtIGFuIGFuc3dlclwifSx7aWQ6NCxxdWVzdGlvbjogXCJoaSBpIGFtIGEgcXVlc3Rpb25cIiwgYW5zd2VyOiBcImhpIGkgYW0gYW4gYW5zd2VyXCJ9XTtcblxuUmVhY3RET00ucmVuZGVyKDxBcHAgcG9zdHM9e1BPU1RTfS8+LCBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImFwcFwiKSk7Il19
+ReactDOM.render(React.createElement(
+	Router,
+	null,
+	React.createElement(
+		Route,
+		{ path: "/", component: App },
+		React.createElement(IndexRoute, { component: Home }),
+		React.createElement(Route, { path: "login", component: OwnerView }),
+		React.createElement(Route, { path: "post", component: PostView })
+	)
+), document.getElementById("app"));
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2NsaWVudC9zcmMvaW5kZXguanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxTQUFTLE1BQVQsQ0FDQztBQUFDLE9BQUQ7Q0FBQTtDQUNDO0FBQUMsT0FBRDtFQUFBLEVBQU8sTUFBSyxHQUFaLEVBQWdCLFdBQVcsR0FBM0I7RUFDQyxvQkFBQyxVQUFELElBQVksV0FBVyxJQUF2QixHQUREO0VBRUMsb0JBQUMsS0FBRCxJQUFPLE1BQUssT0FBWixFQUFvQixXQUFXLFNBQS9CLEdBRkQ7RUFHQyxvQkFBQyxLQUFELElBQU8sTUFBSyxNQUFaLEVBQW1CLFdBQVcsUUFBOUI7QUFIRDtBQURELENBREQsRUFRRyxTQUFTLGNBQVQsQ0FBd0IsS0FBeEIsQ0FSSCIsImZpbGUiOiJpbmRleC5qcyIsInNvdXJjZXNDb250ZW50IjpbIlJlYWN0RE9NLnJlbmRlcigoXG5cdDxSb3V0ZXI+XG5cdFx0PFJvdXRlIHBhdGg9XCIvXCIgY29tcG9uZW50PXtBcHB9PlxuXHRcdFx0PEluZGV4Um91dGUgY29tcG9uZW50PXtIb21lfS8+XG5cdFx0XHQ8Um91dGUgcGF0aD1cImxvZ2luXCIgY29tcG9uZW50PXtPd25lclZpZXd9IC8+XG5cdFx0XHQ8Um91dGUgcGF0aD1cInBvc3RcIiBjb21wb25lbnQ9e1Bvc3RWaWV3fSAvPlxuXHRcdDwvUm91dGU+XHRcblx0PC9Sb3V0ZXI+XG4pLCBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImFwcFwiKSk7Il19

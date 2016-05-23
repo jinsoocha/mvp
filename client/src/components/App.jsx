@@ -1,3 +1,69 @@
+var OwnerView = () => (
+	<div>
+		<p>
+		Hi this is the ownerView!
+		</p>
+	</div>
+);
+
+class PostView extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			type: 'info',
+			message: ''
+		};
+	}
+
+	sendFormData () {
+		console.log("sending the form to the server")
+	}
+
+	handleSubmit (e) {
+		e.preventDefault();
+		document.getElementById('heading').scrollIntoView();
+  	this.setState({ 
+  		type: 'info', 
+  		message: 'Thank you! I have received your question.' 
+  	}, this.sendFormData.bind(this));
+	}
+
+	render () {
+		if (this.state.type && this.state.message) {
+	    var classString = 'alert alert-' + this.state.type;
+	    var status = <div id="status" className={classString} ref="status">
+	                   {this.state.message}
+	                 </div>;
+  	}
+
+		return (
+			<div>
+		 		<h1 id="heading">Tell me what you are curious about me</h1>
+      	{status}
+				<form action="" onSubmit={this.handleSubmit.bind(this)}>
+          <div className="form-group">
+            <label htmlFor="name">Your full name *</label>
+            <input className="form-control" name="name" ref="name" required type="text" />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email">Your email address to receive the answer in case it is sent privately *</label>
+            <input className="form-control" name="email" ref="email" required type="email" />
+          </div>
+
+          <h3>Would you like to receive the answer privately if the owner decides not to post the answer? *</h3>
+          <div className="form-group">
+            <label className="checkbox-inline"><input name="areas" ref="areas" type="checkbox" value="EmailRequest" />Yes</label>
+          </div>
+          <div className="form-group">
+            <button className="btn btn-primary" type="submit">Send your question</button>
+          </div>
+        </form>
+      </div>
+    );
+	}   
+};
+
+
 var PostListEntry = ({post}) => (
 	<div>
 		<p>
@@ -18,11 +84,9 @@ class PostList extends React.Component {
 		var filterdPosts = [];
 		this.props.posts.forEach((post) => {
 			if(post.question.indexOf(this.props.searchText) !== -1) {
-				console.log(post)
 				filterdPosts.push(post);
 			}
 		});
-		console.log(filterdPosts)
 
 		return(
 			<div>
@@ -62,55 +126,65 @@ class SearchBar extends React.Component {
   
 };
 
+
+class Home extends React.Component {
+	constructor(props) {
+    super(props);
+    this.state = {
+    	posts: [{id: 1, question: "what if", answer: "hi i am an answer"},{id: 2, question: "hi i am a question", answer: "hi i am an answer"},{id:3, question: "hi i am a question", answer: "hi i am an answer"},{id:4,question: "hi i am a question", answer: "hi i am an answer"}],
+      searchText: '',
+    };
+  }
+
+  handleSearchInput (searchText) {
+  	this.setState({
+  		searchText: searchText
+  	});
+  }
+
+  render() {
+		return(
+			<div>
+				<div>
+					<SearchBar 
+						onSearchInput={this.handleSearchInput.bind(this)}
+				    searchText={this.state.searchText}
+				  />
+			  </div>
+			  <div>
+			  	<PostList 
+			  	posts={this.state.posts}
+			  	searchText={this.state.searchText}
+			    />
+			  </div>
+		  </div>
+		);  
+	}   
+}
+
 var Nav = ({loginClicked, postClicked}) => (
-	<nav>
-		<button>
-		Login
-		</button>
-		<button>
-		Ask Your Own Question
-		</button>
+	<nav>		
+  	<ul>
+  		<li><Link to="/">Home</Link></li>
+      <li><Link to="login">Login</Link></li>    
+      <li><Link to="post">Ask Your Own Question</Link></li>    
+    </ul>
 	</nav>
 )
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      //posts: []
-      searchText: '',
-      loginClicked: false,
-      postClicked: false
-    };
-  }
-
-  handleSearchInput (searchText) {
-  	console.log(searchText)
-  	this.setState({
-  		searchText: searchText
-  	});
   }
 
 	render () {
 		return (
 		  <div>
 		    <div>
-		   	  <Nav 
-		   	  loginClicked={this.state.loginClicked}
-		   	  postClicked={this.state.postClicked}
-		   	  />
+		   	  <Nav />
 		    </div>
 		    <div>
-			    <SearchBar 
-			    onSearchInput={this.handleSearchInput.bind(this)}
-			    searchText={this.state.searchText}
-			    />
-		    </div>
-		    <div>
-		    	<PostList 
-		    	posts={this.props.posts}
-		    	searchText={this.state.searchText}
-		    	/>
+		    	{this.props.children}
 		    </div>
 		  </div>
 		);
