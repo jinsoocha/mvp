@@ -15,8 +15,41 @@ class PostView extends React.Component {
 		};
 	}
 
+	requestBuildQueryString (params) {
+    var queryString = [];
+    for(var property in params)
+      if (params.hasOwnProperty(property)) {
+        queryString.push(encodeURIComponent(property) + '=' + encodeURIComponent(params[property]));
+      }
+    return queryString.join('&');
+  }
+
 	sendFormData () {
 		console.log("sending the form to the server")
+		// var formData = {
+  //     name: React.findDOMNode(this.refs.name).value,
+  //     email: React.findDOMNode(this.refs.email).value,
+  //     contents: React.findDOMNode(this.refs.contents).value,
+  //     emailRequested: React.findDOMNode(this.refs.emailRequest).checked
+  //   };
+
+  //   // Send the form data.
+  //   var xmlhttp = new XMLHttpRequest();
+  //   var _this = this;
+  //   xmlhttp.onreadystatechange = function() {
+  //     if (xmlhttp.readyState === 4) {
+  //       var response = JSON.parse(xmlhttp.responseText);
+  //       if (xmlhttp.status === 200 && response.status === 'OK') {
+  //         _this.setState({ type: 'success', message: 'I have received your question. Thanks!' });
+  //       }
+  //       else {
+  //         _this.setState({ type: 'danger', message: 'Sorry, there has been an error. Please try again later.' });
+  //       }
+  //     }
+  //   };
+  //   xmlhttp.open('POST', 'send', true);
+  //   xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+  //   xmlhttp.send(this.requestBuildQueryString(formData));
 	}
 
 	handleSubmit (e) {
@@ -24,12 +57,13 @@ class PostView extends React.Component {
 		document.getElementById('heading').scrollIntoView();
   	this.setState({ 
   		type: 'info', 
-  		message: 'Thank you! I have received your question.' 
+  		message: 'Sending...' 
   	}, this.sendFormData.bind(this));
 	}
 
 	render () {
 		if (this.state.type && this.state.message) {
+			console.log(this.state.type, ",",this.state.message)
 	    var classString = 'alert alert-' + this.state.type;
 	    var status = <div id="status" className={classString} ref="status">
 	                   {this.state.message}
@@ -52,7 +86,7 @@ class PostView extends React.Component {
 
           <h3>Would you like to receive the answer privately if the owner decides not to post the answer? *</h3>
           <div className="form-group">
-            <label className="checkbox-inline"><input name="areas" ref="areas" type="checkbox" value="EmailRequest" />Yes</label>
+            <label className="checkbox-inline"><input name="emailRequest" ref="emailRequest" type="checkbox" />Yes</label>
           </div>
           <div className="form-group">
             <label htmlFor="contents">Your question *</label>
