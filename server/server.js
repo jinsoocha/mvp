@@ -11,8 +11,8 @@ app.use(express.static(__dirname + '/../compiled'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 var results = {}
-results.data = [];
-id = 0;
+results.data = [{id: 1, question: 'How is the work environment in SF as an engineer?', answer: 'Hi'},{id: 2, question: 'Do you like living in Korea or America better?', answer:'Hey'},{id: 3, question: 'How was your Hack Reactor expriences?', answer: 'haha'}];
+id = 3;
 
 app.post('/server', function (req, res) {
   if(req.body.question) {

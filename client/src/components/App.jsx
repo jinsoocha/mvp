@@ -11,7 +11,7 @@ class App extends React.Component {
 			  	Ask Jinsoo For The World!
 			  	</h1>
 			  	<h3 style={{'textAlign': 'center'}}>
-			  	Her experiences, values and perspective might help the other people as well. 
+			  	Her experiences, values and perspective might help other people as well. 
 			  	</h3>
 		  	</div>
 		    <div>

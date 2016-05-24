@@ -6,7 +6,7 @@ class QuestionList extends React.Component {
 	render () {
 		var filterdPosts = [];
 		this.props.posts.forEach((post) => {
-			if(post.question.indexOf(this.props.searchText) !== -1) {
+			if(post.question.toLowerCase().indexOf(this.props.searchText.toLowerCase()) !== -1) {
 				filterdPosts.push(post);
 			}
 		});
