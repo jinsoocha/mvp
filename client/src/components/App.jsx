@@ -1,7 +1,7 @@
 var OwnerView = () => (
 	<div>
 		<p>
-		Hi this is the ownerView!
+		Under Construction
 		</p>
 	</div>
 );
@@ -26,30 +26,29 @@ class PostView extends React.Component {
 
 	sendFormData () {
 		console.log("sending the form to the server")
-		// var formData = {
-  //     name: React.findDOMNode(this.refs.name).value,
-  //     email: React.findDOMNode(this.refs.email).value,
-  //     contents: React.findDOMNode(this.refs.contents).value,
-  //     emailRequested: React.findDOMNode(this.refs.emailRequest).checked
-  //   };
+		var formData = {
+      name: ReactDOM.findDOMNode(this.refs.name).value,
+      email: ReactDOM.findDOMNode(this.refs.email).value,
+      question: ReactDOM.findDOMNode(this.refs.question).value,
+      emailRequested: ReactDOM.findDOMNode(this.refs.emailRequest).checked
+    };
 
-  //   // Send the form data.
-  //   var xmlhttp = new XMLHttpRequest();
-  //   var _this = this;
-  //   xmlhttp.onreadystatechange = function() {
-  //     if (xmlhttp.readyState === 4) {
-  //       var response = JSON.parse(xmlhttp.responseText);
-  //       if (xmlhttp.status === 200 && response.status === 'OK') {
-  //         _this.setState({ type: 'success', message: 'I have received your question. Thanks!' });
-  //       }
-  //       else {
-  //         _this.setState({ type: 'danger', message: 'Sorry, there has been an error. Please try again later.' });
-  //       }
-  //     }
-  //   };
-  //   xmlhttp.open('POST', 'send', true);
-  //   xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-  //   xmlhttp.send(this.requestBuildQueryString(formData));
+    var xmlhttp = new XMLHttpRequest();
+    var _this = this;
+    xmlhttp.onreadystatechange = function() {
+      if (xmlhttp.readyState === 4) {
+        var response = JSON.parse(xmlhttp.responseText);
+        if (xmlhttp.status === 200 && response.status === 'OK') {
+          _this.setState({ type: 'success', message: 'I have received your question. Thanks!' });
+        }
+        else {
+          _this.setState({ type: 'danger', message: 'Sorry, there has been an error. Please try again later.' });
+        }
+      }
+    };
+    xmlhttp.open('POST', 'http://localhost:3000/server', true);
+    xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xmlhttp.send(this.requestBuildQueryString(formData));
 	}
 
 	handleSubmit (e) {
@@ -84,13 +83,13 @@ class PostView extends React.Component {
             <input className="form-control" name="email" ref="email" required type="email" />
           </div>
 
-          <h3>Would you like to receive the answer privately if the owner decides not to post the answer? *</h3>
+          <h3>Would you like to receive the answer privately if the owner decides not to post the answer? </h3>
           <div className="form-group">
             <label className="checkbox-inline"><input name="emailRequest" ref="emailRequest" type="checkbox" />Yes</label>
           </div>
           <div className="form-group">
-            <label htmlFor="contents">Your question *</label>
-            <textarea className="form-control" name="contents" ref="contents" rows="4" />
+            <label htmlFor="question">Your question *</label>
+            <textarea className="form-control" name="question" ref="question" rows="4" required/>
           </div>
           <div className="form-group">
             <button className="btn btn-primary" type="submit">Send your question</button>
