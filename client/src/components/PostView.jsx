@@ -4,7 +4,6 @@ class PostView extends React.Component {
 		this.state = {
 			type: 'info',
 			message: '',
-      id: 0
 		};
 	}
 
@@ -18,9 +17,7 @@ class PostView extends React.Component {
   }
 
 	sendFormData () {
-		console.log("sending the form to the server")
 		var formData = {
-      id: this.state.id,
       name: ReactDOM.findDOMNode(this.refs.name).value,
       email: ReactDOM.findDOMNode(this.refs.email).value,
       question: ReactDOM.findDOMNode(this.refs.question).value,
@@ -49,7 +46,6 @@ class PostView extends React.Component {
 		e.preventDefault();
 		document.getElementById('heading').scrollIntoView();
   	this.setState({ 
-      id: this.state.id+1,
   		type: 'info', 
   		message: 'Sending...' 
   	}, this.sendFormData.bind(this));
@@ -57,7 +53,6 @@ class PostView extends React.Component {
 
 	render () {
 		if (this.state.type && this.state.message) {
-			console.log(this.state.type, ",",this.state.message)
 	    var classString = 'alert alert-' + this.state.type;
 	    var status = <div id="status" className={classString} ref="status">
 	                   {this.state.message}

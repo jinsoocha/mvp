@@ -12,10 +12,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 var results = {}
 results.data = [];
+id = 0;
 
 app.post('/server', function (req, res) {
   if(req.body.question) {
-    console.log("question", req.body)
     var Email = require('emailjs/email');
     var server = Email.server.connect({
       host: 'smtp.gmail.com',
@@ -34,14 +34,15 @@ app.post('/server', function (req, res) {
       	console.log(req.body, error)
         return res.send({statusCode: 500, status: 'KO'});
       } else {
+        id++;
+        req.body.id = id;
       	results.data.push(req.body);
         return res.send({statusCode: 200, status: 'OK', data: results});
       }
     });
   } else {
-    console.log("answer",req.body)
     results.data.forEach(function(post) {
-      if(post.id === req.body.id) {
+      if(post.id === Number(req.body.id)) {
         post.answer = req.body.answer;
       }
     });

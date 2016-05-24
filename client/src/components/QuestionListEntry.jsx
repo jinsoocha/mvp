@@ -23,14 +23,14 @@ class QuestionListEntry extends React.Component {
 
 	  	return (
 	  		<div>
-				<div id="heading">
-					<h4>
-					{this.props.post.question} by {this.props.post.name}
-					</h4>
-					<button className="btn btn-default pull-right" onClick={this.handleClickAnswer.bind(this)}>Answer this question</button>
-					<button className="btn btn-default pull-right">Delete this question</button>
-				</div>
-				{answerView}
+					<div id="heading" style={{marginBottom: '30px', textAlign: 'center'}}>
+						<button style={{marginRight: '20px'}} className="btn btn-default" onClick={this.handleClickAnswer.bind(this)}>Answer this question</button>
+						<button style={{marginRight: '20px'}} className="btn btn-default">Delete this question</button>
+						<h4 style={{marginTop: '20px'}}>
+						{this.props.post.name}: "{this.props.post.question}"
+						</h4>
+					</div>
+					{answerView}
 			</div>
 		)
 	}		

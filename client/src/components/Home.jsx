@@ -15,13 +15,11 @@ class Home extends React.Component {
       success: function(data) {
       	var answeredPosts =[];
       	data.data.forEach(function(post) {
-      		console.log("for looping")
       		if(post.answer) {
-      			console.log("answered!",post)
       			answeredPosts.push(post);
       		}
       	});
-		this.setState({posts: answeredPosts});			
+		    this.setState({posts: answeredPosts});			
       }.bind(this),	
       error: function(xhr, status, err) {
         console.error(this.state.url, status, err.toString());
@@ -31,7 +29,6 @@ class Home extends React.Component {
 
   componentDidMount () {
     this.loadPosts();
-    setInterval(this.loadPosts, 2000);
   }
 
   handleSearchInput (searchText) {

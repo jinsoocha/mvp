@@ -21,7 +21,6 @@ class AnswerView extends React.Component {
       id: this.props.post.id,
       answer: ReactDOM.findDOMNode(this.refs.answer).value,
     };
-
     var xmlhttp = new XMLHttpRequest();
     var _this = this;
     xmlhttp.onreadystatechange = function() {

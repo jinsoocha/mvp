@@ -9,7 +9,7 @@ class SearchBar extends React.Component {
 
 	render () {
 		return (
-			<form style={{marginBottom: '60px'}}>
+			<form style={{marginBottom: '30px'}}>
 				<input 
 					className="form-control"
 					type="text" 

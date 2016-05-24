@@ -13,8 +13,14 @@ class OwnerView extends React.Component {
       dataType: 'json',
       cache: false,
       success: function(data) {
-        this.setState({posts: data.data});
-      }.bind(this),
+      	var notAnsweredPosts =[];
+      	data.data.forEach(function(post) {
+      		if(!post.answer) {
+      			notAnsweredPosts.push(post);
+      		}
+      	});
+				this.setState({posts: notAnsweredPosts});			
+      }.bind(this),	
       error: function(xhr, status, err) {
         console.error(this.state.url, status, err.toString());
       }.bind(this)
@@ -23,7 +29,6 @@ class OwnerView extends React.Component {
 
   componentDidMount () {
     this.loadPosts();
-    setInterval(this.loadPosts, 2000);
   }
 
   handleSearchInput (searchText) {
