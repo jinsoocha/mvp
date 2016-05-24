@@ -55,6 +55,10 @@ class PostView extends React.Component {
             <label className="checkbox-inline"><input name="areas" ref="areas" type="checkbox" value="EmailRequest" />Yes</label>
           </div>
           <div className="form-group">
+            <label htmlFor="contents">Your question *</label>
+            <textarea className="form-control" name="contents" ref="contents" rows="4" />
+          </div>
+          <div className="form-group">
             <button className="btn btn-primary" type="submit">Send your question</button>
           </div>
         </form>
