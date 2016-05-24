@@ -10,32 +10,43 @@ console.log('Listening on', app.get('port'));
 app.use(express.static(__dirname + '/../compiled'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
-var data = [];
+var results = {}
+results.data = [];
 
 app.post('/server', function (req, res) {
-  var Email = require('emailjs/email');
-  var server = Email.server.connect({
-    host: 'smtp.gmail.com',
-    user: 'chatownlife@gmail.com',
-    password: 'ckxkdns900',
-    ssl: true
-  });
-  server.send({
-    'text': req.body.question,
-    'from': req.body.email,
-    'to': "chatownlife@gmail.com",
-    'reply-to': req.body.email,
-    'subject': 'Answer FTW: ' + req.body.emailRequested + ', Q: ' + req.body.question 
-  }, function(error) {
-    if (error) {
-    	console.log(req.body, error)
-      return res.send({statusCode: 500, status: 'KO'});
-    } else {
-    	data.push(req.body);
-      return res.send({statusCode: 200, status: 'OK', data: data});
-    }
-  });
+  if(req.body.question) {
+    console.log("question", req.body)
+    var Email = require('emailjs/email');
+    var server = Email.server.connect({
+      host: 'smtp.gmail.com',
+      user: 'chatownlife@gmail.com',
+      password: 'ckxkdns900',
+      ssl: true
+    });
+    server.send({
+      'text': req.body.question,
+      'from': req.body.email,
+      'to': "chatownlife@gmail.com",
+      'reply-to': req.body.email,
+      'subject': 'Answer FTW: ' + req.body.emailRequested + ', Q: ' + req.body.question 
+    }, function(error) {
+      if (error) {
+      	console.log(req.body, error)
+        return res.send({statusCode: 500, status: 'KO'});
+      } else {
+      	results.data.push(req.body);
+        return res.send({statusCode: 200, status: 'OK', data: results});
+      }
+    });
+  } else {
+    console.log("answer",req.body)
+    results.data.forEach(function(post) {
+      if(post.id === req.body.id) {
+        post.answer = req.body.answer;
+      }
+    });
+    return res.send({statusCode: 200, status: 'OK', data: results})
+  }  
 });  
 
 var headers = {
@@ -46,7 +57,7 @@ var headers = {
 };
 
 app.get('/server', function(req, res) {
-	console.log("getting the server")
 	res.writeHead(200, headers);
-  res.end(JSON.stringify(data));
-})
+  res.end(JSON.stringify(results));
+});
+
