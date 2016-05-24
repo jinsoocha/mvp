@@ -15,7 +15,7 @@ results.data = [{id: 1, question: 'How is the work environment in SF as an engin
 id = 3;
 
 app.post('/server', function (req, res) {
-  if(req.body.question) {
+  if(req.body.question && !req.body.delete && !req.body.answer) {
     var Email = require('emailjs/email');
     var server = Email.server.connect({
       host: 'smtp.gmail.com',
@@ -40,14 +40,21 @@ app.post('/server', function (req, res) {
         return res.send({statusCode: 200, status: 'OK', data: results});
       }
     });
-  } else {
+  } else if (req.body.answer) {
     results.data.forEach(function(post) {
       if(post.id === Number(req.body.id)) {
         post.answer = req.body.answer;
       }
     });
     return res.send({statusCode: 200, status: 'OK', data: results})
-  }  
+  } else if (req.body.delete) {
+    results.data.forEach(function(post) {
+      if(post.id === Number(req.body.id)) {
+        results.data.splice(results.data.indexOf(post),1);
+      }
+    });
+    return res.send({statusCode: 200, status: 'OK', data: results})
+  } 
 });  
 
 var headers = {
