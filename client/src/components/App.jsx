@@ -70,8 +70,8 @@ class PostView extends React.Component {
   	}
 
 		return (
-			<div>
-		 		<h1 id="heading">Tell me what you are curious about me</h1>
+			<div className="container-fluid">
+		 		<h1 id="heading">Ask me!</h1>
       	{status}
 				<form action="" onSubmit={this.handleSubmit.bind(this)}>
           <div className="form-group">
@@ -83,7 +83,7 @@ class PostView extends React.Component {
             <input className="form-control" name="email" ref="email" required type="email" />
           </div>
 
-          <h3>Would you like to receive the answer privately if the owner decides not to post the answer? </h3>
+          <label>Would you like to receive the answer privately if the owner decides not to post the answer? </label>
           <div className="form-group">
             <label className="checkbox-inline"><input name="emailRequest" ref="emailRequest" type="checkbox" />Yes</label>
           </div>
@@ -103,12 +103,12 @@ class PostView extends React.Component {
 
 var PostListEntry = ({post}) => (
 	<div>
-		<p>
-		Q: {post.question}
-		</p>
-		<p>
-		A: {post.answer}
-		</p>
+		<h3>
+		{post.question}
+		</h3>
+		<blockquote>
+		{post.answer}
+		</blockquote>
 	</div>
 );
 
@@ -151,6 +151,7 @@ class SearchBar extends React.Component {
 		return (
 			<form>
 				<input 
+					className="form-control"
 					type="text" 
 					placeholder="Search questions here!"
 					value= {this.props.searchText}
@@ -189,6 +190,15 @@ class Home extends React.Component {
 				  />
 			  </div>
 			  <div>
+			  	<h2>
+			  	Hi, my name is Jinsoo Cha.
+			  	</h2>
+			  	<p>
+			  	I am a full stack developer in San Francisco, focusing on Javascript technologies. Ask me about life in SF as a software engineer! I would be happy to share my experiences.
+			  	</p>
+			  	<hr/>
+			  </div>
+			  <div>
 			  	<PostList 
 			  	posts={this.state.posts}
 			  	searchText={this.state.searchText}
@@ -200,13 +210,15 @@ class Home extends React.Component {
 }
 
 var Nav = ({loginClicked, postClicked}) => (
-	<nav>		
-  	<ul>
-  		<li><Link to="/">Home</Link></li>
-      <li><Link to="login">Login</Link></li>    
-      <li><Link to="post">Ask Your Own Question</Link></li>    
-    </ul>
-	</nav>
+	<div>
+		<nav>
+	  	<button className="btn btn-default navbar-btn pull-right"><Link to="login">Login</Link></button>        
+			<ul className="nav nav-tabs">
+				<li role="presentation"><Link to="/">Home</Link></li>
+		    <li role="presentation"><Link to="post">Ask Your Own Question</Link></li>
+		  </ul>   
+		</nav>
+  </div>
 )
 
 class App extends React.Component {
